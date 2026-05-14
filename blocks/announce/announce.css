@@ -1,0 +1,21 @@
+.announce-container .announce-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.announce-container {
+  padding: 0;
+}
+
+.announce {
+  background: var(--text-color);
+  color: #fff;
+  text-align: center;
+  padding: 10px var(--gutter);
+}
+
+.announce p {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}

@@ -1,0 +1,76 @@
+.promo-container .promo-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.promo-container {
+  padding: 0;
+}
+
+.promo .promo-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  background: var(--light-color);
+}
+
+@media (width >= 600px) {
+  .promo .promo-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.promo .promo-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.promo .promo-image picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promo .promo-copy {
+  padding: clamp(40px, 6vw, 80px) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.promo .promo-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark-color);
+  margin: 0 0 8px;
+}
+
+.promo .promo-copy h2 {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  max-width: 18ch;
+}
+
+.promo .promo-description {
+  color: var(--dark-color);
+  max-width: 42ch;
+  margin: 0 0 18px;
+}
+
+.promo .promo-copy .button-wrapper {
+  margin: 0;
+}
+
+.promo .promo-copy a.button:any-link {
+  background: transparent;
+  color: var(--text-color);
+}
+
+.promo .promo-copy a.button:hover {
+  background: var(--text-color);
+  color: #fff;
+}

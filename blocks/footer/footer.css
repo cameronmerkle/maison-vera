@@ -1,20 +1,99 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+footer .footer {
+  border-top: 1px solid var(--line-color);
+  font-size: 14px;
 }
 
 footer .footer > div {
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  max-width: var(--section-max-width);
+  padding: 56px var(--gutter) 28px;
 }
 
 footer .footer p {
   margin: 0;
 }
 
+footer .footer h5 {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 14px;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+footer .footer li a:any-link {
+  color: var(--dark-color);
+}
+
+footer .footer li a:hover {
+  color: var(--text-color);
+}
+
+footer .footer > div > .default-content-wrapper:last-child {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--line-color);
+  font-size: 12px;
+  color: var(--dark-color);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+footer .footer > div > .default-content-wrapper:last-child p:first-child {
+  flex: 1;
+}
+
+footer .footer > div > .default-content-wrapper:last-child p:last-child {
+  display: flex;
+  gap: 18px;
+}
+
+footer .footer > div > .default-content-wrapper:last-child a:hover {
+  color: var(--text-color);
+}
+
+footer .footer .columns-wrapper {
+  margin-bottom: 48px;
+}
+
+footer .footer .columns > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer .columns > div {
+    grid-template-columns: 1.4fr repeat(4, 1fr);
   }
+}
+
+footer .footer .columns > div > div:first-child {
+  grid-column: 1 / -1;
+}
+
+@media (width >= 900px) {
+  footer .footer .columns > div > div:first-child {
+    grid-column: auto;
+  }
+}
+
+footer .footer .columns > div > div:first-child p:first-child {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+}
+
+footer .footer .columns > div > div:first-child p:last-child {
+  font-size: 13px;
+  color: var(--dark-color);
 }
