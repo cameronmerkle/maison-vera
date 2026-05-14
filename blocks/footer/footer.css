@@ -36,7 +36,44 @@ footer .footer li a:hover {
   color: var(--text-color);
 }
 
-footer .footer > div > .default-content-wrapper:last-child {
+/* footer grid layout */
+footer .footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+@media (width >= 900px) {
+  footer .footer .footer-grid {
+    grid-template-columns: 1.4fr repeat(4, 1fr);
+  }
+}
+
+footer .footer .footer-brand {
+  grid-column: 1 / -1;
+}
+
+@media (width >= 900px) {
+  footer .footer .footer-brand {
+    grid-column: auto;
+  }
+}
+
+footer .footer .footer-brand p:first-child {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+}
+
+footer .footer .footer-brand p:last-of-type {
+  font-size: 13px;
+  color: var(--dark-color);
+}
+
+/* bottom bar */
+footer .footer .footer-bottom {
   display: flex;
   justify-content: space-between;
   padding-top: 24px;
@@ -47,53 +84,15 @@ footer .footer > div > .default-content-wrapper:last-child {
   flex-wrap: wrap;
 }
 
-footer .footer > div > .default-content-wrapper:last-child p:first-child {
+footer .footer .footer-bottom p:first-child {
   flex: 1;
 }
 
-footer .footer > div > .default-content-wrapper:last-child p:last-child {
+footer .footer .footer-bottom p:last-child {
   display: flex;
   gap: 18px;
 }
 
-footer .footer > div > .default-content-wrapper:last-child a:hover {
+footer .footer .footer-bottom a:hover {
   color: var(--text-color);
-}
-
-footer .footer .columns-wrapper {
-  margin-bottom: 48px;
-}
-
-footer .footer .columns > div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-
-@media (width >= 900px) {
-  footer .footer .columns > div {
-    grid-template-columns: 1.4fr repeat(4, 1fr);
-  }
-}
-
-footer .footer .columns > div > div:first-child {
-  grid-column: 1 / -1;
-}
-
-@media (width >= 900px) {
-  footer .footer .columns > div > div:first-child {
-    grid-column: auto;
-  }
-}
-
-footer .footer .columns > div > div:first-child p:first-child {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  margin-bottom: 12px;
-}
-
-footer .footer .columns > div > div:first-child p:last-child {
-  font-size: 13px;
-  color: var(--dark-color);
 }
