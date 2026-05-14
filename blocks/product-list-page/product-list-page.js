@@ -38,7 +38,13 @@ export default async function decorate(block) {
 
   const result = await searchProducts({ pageSize, currentPage: 1, categoryPath });
 
-  resultInfo.textContent = `${result.totalCount} products`;
+  const showing = result.items.length;
+  const { totalCount } = result;
+  if (showing < totalCount) {
+    resultInfo.textContent = `Showing ${showing} of ${totalCount} products`;
+  } else {
+    resultInfo.textContent = `${totalCount} products`;
+  }
 
   result.items.forEach((product) => {
     productList.append(renderProductCard(product));
