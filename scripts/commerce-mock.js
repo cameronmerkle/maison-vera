@@ -9,6 +9,7 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-01b.jpg', label: 'Halden Wool Coat alt' },
     ],
     attributes: [{ name: 'color', value: 'Camel' }],
+    categories: ['women', 'outerwear', 'new-arrivals'],
     badge: 'New',
     inStock: true,
   },
@@ -22,6 +23,7 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-02b.jpg', label: 'Silk Slip Dress alt' },
     ],
     attributes: [{ name: 'color', value: 'Ink' }],
+    categories: ['women', 'dresses'],
     badge: null,
     inStock: true,
   },
@@ -35,6 +37,7 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-03b.jpg', label: 'Pleated Trouser alt' },
     ],
     attributes: [{ name: 'color', value: 'Charcoal' }],
+    categories: ['women', 'trousers'],
     badge: null,
     inStock: true,
   },
@@ -48,6 +51,7 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-04b.jpg', label: 'Leather Loafer alt' },
     ],
     attributes: [{ name: 'color', value: 'Espresso' }],
+    categories: ['accessories', 'shoes', 'new-arrivals'],
     badge: 'New',
     inStock: true,
   },
@@ -61,6 +65,7 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-05b.jpg', label: 'Cashmere Crewneck alt' },
     ],
     attributes: [{ name: 'color', value: 'Oat' }],
+    categories: ['women', 'knitwear'],
     badge: null,
     inStock: true,
   },
@@ -74,6 +79,7 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-06b.jpg', label: 'Cotton Poplin Shirt alt' },
     ],
     attributes: [{ name: 'color', value: 'Ivory' }],
+    categories: ['men', 'shirts'],
     badge: null,
     inStock: true,
   },
@@ -87,6 +93,7 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-07b.jpg', label: 'Tailored Blazer alt' },
     ],
     attributes: [{ name: 'color', value: 'Navy' }],
+    categories: ['men', 'outerwear', 'new-arrivals'],
     badge: 'New',
     inStock: true,
   },
@@ -100,10 +107,46 @@ const MOCK_PRODUCTS = [
       { url: '/drafts/images/product-08b.jpg', label: 'Wide-leg Denim alt' },
     ],
     attributes: [{ name: 'color', value: 'Indigo' }],
+    categories: ['women', 'denim', 'sale'],
     badge: null,
     inStock: true,
   },
+  {
+    sku: 'MV-009',
+    name: 'Linen Resort Shirt',
+    urlKey: 'linen-resort-shirt',
+    price: { regular: 165, final: 132, currency: 'USD' },
+    images: [
+      { url: '/drafts/images/product-06.jpg', label: 'Linen Resort Shirt' },
+      { url: '/drafts/images/product-06b.jpg', label: 'Linen Resort Shirt alt' },
+    ],
+    attributes: [{ name: 'color', value: 'Sand' }],
+    categories: ['men', 'shirts', 'sale'],
+    badge: 'Sale',
+    inStock: true,
+  },
+  {
+    sku: 'MV-010',
+    name: 'Merino Wrap Scarf',
+    urlKey: 'merino-wrap-scarf',
+    price: { regular: 95, final: 95, currency: 'USD' },
+    images: [
+      { url: '/drafts/images/product-05.jpg', label: 'Merino Wrap Scarf' },
+      { url: '/drafts/images/product-05b.jpg', label: 'Merino Wrap Scarf alt' },
+    ],
+    attributes: [{ name: 'color', value: 'Charcoal' }],
+    categories: ['accessories', 'scarves', 'new-arrivals'],
+    badge: 'New',
+    inStock: true,
+  },
 ];
+
+/**
+ * Available categories for authoring reference:
+ *   women, men, accessories
+ *   new-arrivals, sale
+ *   outerwear, dresses, trousers, knitwear, shirts, denim, shoes, scarves
+ */
 
 function formatPrice(price) {
   return new Intl.NumberFormat('en-US', {
@@ -115,6 +158,12 @@ function formatPrice(price) {
 
 /**
  * Mock Commerce API — simulates @dropins/storefront-product-discovery search()
+ *
+ * @param {Object} options
+ * @param {number} options.pageSize - products per page (default 8)
+ * @param {number} options.currentPage - page number (default 1)
+ * @param {string} options.categoryPath - category slug to filter by (e.g. 'women', 'new-arrivals')
+ *
  * Replace this with real drop-in initialization when connecting to Adobe Commerce.
  */
 export async function searchProducts({
@@ -124,7 +173,8 @@ export async function searchProducts({
 } = {}) {
   let filtered = [...MOCK_PRODUCTS];
   if (categoryPath) {
-    filtered = filtered.filter((p) => p.urlKey.includes(categoryPath));
+    const category = categoryPath.toLowerCase().trim();
+    filtered = filtered.filter((p) => p.categories.includes(category));
   }
   const start = (currentPage - 1) * pageSize;
   const items = filtered.slice(start, start + pageSize);
@@ -189,7 +239,12 @@ export function renderProductCard(product) {
 
   const price = document.createElement('p');
   price.className = 'product-card-price';
-  price.textContent = formatPrice(product.price);
+  if (product.price.final < product.price.regular) {
+    price.innerHTML = `<span class="product-card-price-sale">${formatPrice(product.price)}</span>`
+      + ` <span class="product-card-price-was">${formatPrice({ ...product.price, final: product.price.regular })}</span>`;
+  } else {
+    price.textContent = formatPrice(product.price);
+  }
 
   body.append(name);
   body.append(price);

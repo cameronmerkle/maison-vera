@@ -137,6 +137,15 @@
   color: var(--dark-color);
 }
 
+.product-list-page .product-card-price-sale {
+  color: #9b2c2c;
+}
+
+.product-list-page .product-card-price-was {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
 .product-list-page .product-card-color {
   margin: 4px 0 0;
   font-size: 12px;
