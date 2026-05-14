@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, decorateIcons } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -150,6 +150,18 @@ export default async function decorate(block) {
       });
     });
   }
+
+  const iconMap = { search: 'search', account: 'account', bag: 'bag' };
+  nav.querySelectorAll('.nav-tools a, .nav-brand ~ div:last-child a').forEach((a) => {
+    const text = a.textContent.trim().toLowerCase();
+    const iconName = iconMap[text];
+    if (iconName) {
+      const iconSpan = document.createElement('span');
+      iconSpan.classList.add('icon', `icon-${iconName}`);
+      a.prepend(iconSpan);
+    }
+  });
+  decorateIcons(nav);
 
   // hamburger for mobile
   const hamburger = document.createElement('div');

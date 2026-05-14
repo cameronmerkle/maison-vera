@@ -282,3 +282,14 @@ header nav .nav-tools a:any-link {
   align-items: center;
   gap: 6px;
 }
+
+header nav .nav-tools .icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+}
+
+header nav .nav-tools .icon img {
+  width: 18px;
+  height: 18px;
+}

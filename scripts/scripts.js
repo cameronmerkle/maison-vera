@@ -68,6 +68,12 @@ function buildAutoBlocks(main) {
     }
 
     buildHeroBlock(main);
+
+    const announce = main.querySelector('.announce');
+    if (announce) {
+      const section = announce.closest('.section') || announce.parentElement;
+      document.querySelector('header').before(section);
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
