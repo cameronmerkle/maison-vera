@@ -176,6 +176,10 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  import('./commerce.js')
+    .then(({ initializeCommerce }) => initializeCommerce())
+    .catch(() => { /* Commerce not available */ });
 }
 
 /**

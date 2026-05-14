@@ -1,0 +1,9 @@
+{
+  "data": [
+    { "key": "commerce-endpoint", "value": "" },
+    { "key": "commerce-store-code", "value": "main_website_store" },
+    { "key": "commerce-store-view-code", "value": "default" },
+    { "key": "commerce-website-code", "value": "base" },
+    { "key": "commerce-customer-group", "value": "" }
+  ]
+}

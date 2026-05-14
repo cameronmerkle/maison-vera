@@ -1,1 +1,52 @@
-/* add global styles that can be loaded post LCP here */
+/* Commerce drop-in design tokens — Maison Vera theme */
+.dropin-design {
+  /* Brand colors */
+  --color-brand-500: #111;
+  --color-brand-600: #000;
+  --color-brand-700: #000;
+  --color-brand-300: #6b6b6b;
+  --color-brand-400: #333;
+
+  /* Neutral palette */
+  --color-neutral-50: #fff;
+  --color-neutral-100: #f5f2ec;
+  --color-neutral-200: #e8e5e0;
+  --color-neutral-300: #d4d0ca;
+  --color-neutral-400: #a8a5a0;
+  --color-neutral-500: #6b6b6b;
+  --color-neutral-600: #505050;
+  --color-neutral-700: #333;
+  --color-neutral-800: #1a1a1a;
+  --color-neutral-900: #111;
+
+  /* Semantic colors */
+  --color-positive-500: #1a7d3e;
+  --color-warning-500: #b35c00;
+  --color-alert-500: #9b2c2c;
+
+  /* Typography */
+  --type-body-font-family: 'DM Sans', dm-sans-fallback, -apple-system, 'Helvetica Neue', arial, sans-serif;
+  --type-display-font-family: 'DM Sans', dm-sans-fallback, -apple-system, 'Helvetica Neue', arial, sans-serif;
+  --type-body-1-font-size: 15px;
+  --type-body-1-font-weight: 400;
+  --type-body-2-font-size: 13px;
+  --type-body-2-font-weight: 400;
+
+  /* Shapes — square corners to match Maison Vera design */
+  --shape-border-radius-1: 0;
+  --shape-border-radius-2: 0;
+  --shape-border-radius-3: 0;
+
+  /* Buttons */
+  --color-button-active: #111;
+  --color-button-hover: transparent;
+  --color-action-button-active: #111;
+  --color-action-button-hover: #fff;
+
+  /* Spacing */
+  --spacing-xsmall: 8px;
+  --spacing-small: 16px;
+  --spacing-medium: 24px;
+  --spacing-large: 40px;
+  --spacing-xlarge: 56px;
+}
